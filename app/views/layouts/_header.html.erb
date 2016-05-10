@@ -1,0 +1,23 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+   <div class="container">
+     <%= link_to "near_atnd", root_path, id: "logo" %>
+     <nav>
+       <ul class="nav navbar-nav navbar-right">
+         <% if current_user %>
+         <li><%= link_to "Users", '#' %></li>
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             <%= image_tag current_user.image, alt: current_user.name %>
+           </a>
+           <ul class="dropdown-menu">
+             <li><%= link_to "新しくイベントを作る", '#' %></li>
+             <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+           </ul>
+         </li>
+         <% else %>
+         <li><%= link_to "Twitterでログイン", '/auth/twitter' %></li>
+         <% end %>
+       </ul>
+     </nav>
+   </div>
+ </header>
