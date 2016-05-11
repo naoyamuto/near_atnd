@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     begin
       @user = User.from_omniauth(request.env['omniauth.auth'])
       session[:user_id] = @user.id
-      flash[:success] = "ログインしました。こんにちは、#{@user.name}さん！"
+      flash[:success] = "ログインしました。こんにちは、#{@user.nickname}さん！"
     rescue
       flash[:warning] = "認証中にエラーが発生しました・・"
     end
