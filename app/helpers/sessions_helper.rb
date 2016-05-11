@@ -10,8 +10,8 @@ module SessionsHelper
     !current_user.nil?
   end
 
-  # ログインしていなければ
-  def authenticate
+  # 与えられたユーザーがログイン済みユーザーであればtrueを返す
+  def current_user?
+    user == current_user
   end
-
 end

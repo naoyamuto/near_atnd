@@ -1,3 +1,20 @@
-<div class="center jumbotron">
-  <h2>YEAHHHHHHHHHHHH!!!!</h2>
+<div class="page-header">
+  <h1>現在開催中のイベント</h1>
+</div>
+
+<div class="events-list">
+  <% @events.each do |event| %>
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= link_to event.title, event_path(event)  %></h3>
+      </div>
+      <!-- List group -->
+      <ul class="list-group">
+        <li class="list-group-item">開催日：<%= event.hold_at %></li>
+        <li class="list-group-item">最大人数：<%= event.capacity %>人</li>
+        <li class="list-group-item">開催場所：<%= event.location %></li>
+      </ul>
+    </div>
+  <% end %>
 </div>

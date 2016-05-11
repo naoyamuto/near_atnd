@@ -8,4 +8,10 @@ class Event < ActiveRecord::Base
   validates :owner, presence: true
   validates :description, presence: true, length: {maximum: 2000}
 
+  # イベントを作成したユーザーだったらtrueを返す
+  def created_by?(user)
+    return false unless user
+    user_id = user.id
+  end
+
 end

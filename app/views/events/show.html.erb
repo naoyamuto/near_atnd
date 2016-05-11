@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="page-header">
+    <h1><%= @event.title %></h1>
+  </div>
+  <div class="col-md-9">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">開催日</h3>
+        </div>
+        <div class="panel-body"><%= @event.hold_at %></div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">最大人数</h3>
+        </div>
+        <div class="panel-body"><%= @event.capacity %>人</div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">開催場所</h3>
+        </div>
+        <div class="panel-body"><%= @event.location %></div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">開催者</h3>
+        </div>
+        <div class="panel-body"><%= @event.owner %></div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">イベント詳細</h3>
+        </div>
+        <div class="panel-body"><%= @event.description %></div>
+      </div>
+    </div>
+  <div class="col-md-3">
+  <% if @event.created_by?(current_user) %>
+    <%= link_to 'イベントを編集する', edit_event_path(@event), class: 'btn btn-warning btn-lg btn-block' %>
+    <%= link_to "イベントを削除する", @event, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-lg btn-block'%>
+  <% end %>
+  </div>
+</div>

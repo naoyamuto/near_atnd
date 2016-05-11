@@ -1,5 +1,7 @@
-<% now = Time.zone.now %>
-<h1>イベントを新規作成</h1>
+<!-- <% now = Time.zone.now %> -->
+<div class="page-header">
+  <h1>イベントを新規作成</h1>
+</div>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -10,7 +12,7 @@
       <%= f.text_field :title, class: 'form-control' %>
 
       <%= f.label :開催日 %>
-      <%= f.text_field :hold_at, class: 'form-control' %>
+      <%= f.datetime_select :hold_at, class: 'datepicker' %>
 
       <%= f.label :人数 %>
       <%= f.text_field :capacity, class: 'form-control' %>

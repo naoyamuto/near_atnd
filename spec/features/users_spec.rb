@@ -8,7 +8,7 @@ RSpec.describe '/users', type: :feature do
     visit user_path id: user.id
   end
 
-  describe '/user/:id' do
+  describe '/users/:id' do
     it { should have_content user.name }
     it { should have_content user.nickname }
     it { should have_content user.description }

@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$gray-medium-light: #eaeaea;
+
 /* mixins, variables, etc. */
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -29,6 +31,10 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+.row {
+  margin-top: 30px !important;
 }
 
 /* typography */
@@ -78,11 +84,16 @@ p {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 30px;
   @include box_sizing;
+}
+
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
 }
 
 input {
@@ -94,5 +105,12 @@ input {
   ul {
     color: red;
     margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
   }
 }
