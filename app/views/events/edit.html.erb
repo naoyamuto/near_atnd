@@ -1,0 +1,32 @@
+<!-- <% now = Time.zone.now %> -->
+<div class="page-header">
+  <h1>イベントを編集する</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@event) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :イベント名 %>
+      <%= f.text_field :title, class: 'form-control' %>
+
+      <%= f.label :開催日 %>
+      <%= f.date_field :hold_at, class: 'form-control'%>
+
+      <%= f.label :人数 %>
+      <%= f.text_field :capacity, class: 'form-control' %>
+
+      <%= f.label :開催場所 %>
+      <%= f.text_field :location, class: 'form-control' %>
+
+      <%= f.label :主催者 %>
+      <%= f.text_field :owner, class: 'form-control' %>
+
+      <%= f.label :イベント詳細 %>
+      <%= f.text_area :description, placeholder: "開催するイベントの内容を詳しく記載してください。", class: 'form-control' %>
+
+      <%= f.submit "イベントを編集する", class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+require 'time'
+
 class EventsController < ApplicationController
   before_action :logged_in_user, only:[:new, :create, :destroy]
 
@@ -16,10 +18,10 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      flash[:success] = "イベントが公開されました！"
+      flash[:success] = "イベントが公開されました。"
       redirect_to @event
     else
-      render 'events/new'
+      render 'new'
     end
   end
 
@@ -29,9 +31,18 @@ class EventsController < ApplicationController
 
   def update
     @event = current_user.events.find(params[:id])
+    if @event.update_attributes(event_params)
+      flash[:success] = "イベントが更新されました。"
+      redirect_to @event
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    current_user.events.find(params[:id]).destroy
+    flash[:danger] = "イベントが削除されました。"
+    redirect_to root_path
   end
 
 
