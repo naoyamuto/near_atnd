@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :events
+  has_many :attendees
 
   #Oauth認証で取得した情報をDBに登録するメソッド
   class << self
