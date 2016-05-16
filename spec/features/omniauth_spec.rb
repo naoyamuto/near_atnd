@@ -29,8 +29,8 @@ RSpec.describe '/auth', type: :feature do
       end
 
       it { current_path.should eq events_path }
-      it { should have_content "login as #{user.name}" }
-      it { should_not have_content 'login failure' }
+      it { should have_content "こんにちは、#{user.nickname}さん" }
+      it { should_not have_content 'ログインに失敗しました。' }
     end
 
     context 'failure' do
@@ -41,7 +41,7 @@ RSpec.describe '/auth', type: :feature do
       end
 
       it { current_path.should eq events_path }
-      it { should have_content 'login failure' }
+      it { should have_content 'ログインに失敗しました。' }
     end
   end
 

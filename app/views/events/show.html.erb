@@ -52,7 +52,7 @@
           <% @attended.each do |attendance| %>
             <li>
               <%= image_tag attendance.user.image, width:20, height:20 %>
-              <%= link_to attendance.user.name, current_user %>
+              <%= link_to attendance.user.name, user_path(attendance.user_id) %>
             </li>
           <% end %>
       </div>

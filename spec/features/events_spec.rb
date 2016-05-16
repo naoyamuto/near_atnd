@@ -106,6 +106,8 @@ RSpec.describe '/events', type: :feature do
 
             context 'click Absent' do
               before do
+                visit event_path event
+                # binding.pry
                 click_link('このイベントをキャンセルする')
               end
 

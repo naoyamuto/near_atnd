@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'events#index'
   get '/auth/:provider/callback' => 'sessions#create'
+  get 'auth/failure' => 'sessions#failure'
   delete '/logout' => 'sessions#destroy'
 
   resources :users

@@ -3,18 +3,23 @@ class SessionsController < ApplicationController
     begin
       @user = User.from_omniauth(request.env['omniauth.auth'])
       session[:user_id] = @user.id
-      flash[:success] = "ログインしました。こんにちは、#{@user.nickname}さん！"
+      flash[:success] = "こんにちは、#{@user.nickname}さん！"
     rescue
-      flash[:warning] = "認証中にエラーが発生しました・・"
+      flash[:warning] = "ログインに失敗しました。"
     end
-    redirect_to root_path
+    redirect_to events_path
+  end
+
+  def failure
+    flash[:warning] = "ログインに失敗しました。"
+    redirect_to events_path
   end
 
   def destroy
     if current_user
       session.delete(:user_id)
-      flash[:success] = 'ログアウトしました。'
+      # flash[:success] = 'ログアウトしました。'
     end
-    redirect_to root_path
+    redirect_to events_path
   end
 end
