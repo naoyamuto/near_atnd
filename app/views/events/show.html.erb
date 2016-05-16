@@ -33,7 +33,7 @@
         </div>
         <div class="panel-body"><%= @event.description %></div>
       </div>
-      <% if @attendee %>
+      <% if @attend_status %>
         <%= link_to 'このイベントをキャンセルする', absent_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
       <% elsif logged_in? %>
         <%= link_to 'このイベントに参加する', attend_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
