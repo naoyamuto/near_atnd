@@ -42,14 +42,14 @@
   <div class="col-md-3">
   <% if @event.created_by?(current_user) %>
     <%= link_to 'このイベントを編集する', edit_event_path(@event), class: 'btn btn-success btn-block' %>
-    <%= link_to "このイベントを削除する", @event, method: :delete, data: { confirm: "このイベントを本当に削除しますか？" }, class: 'btn btn-warning btn-block mgn'%>
+    <%= link_to "このイベントを削除する", event_path(@event), method: :delete, data: { confirm: "このイベントを本当に削除しますか？" }, class: 'btn btn-warning btn-block mgn'%>
   <% end %>
     <div id="attendance" class="panel panel-primary mgn">
       <div class="panel-heading">
         <h3 class="panel-title">参加者一覧</h3>
       </div>
       <div class="panel-body">
-          <% @attendances.each do |attendance| %>
+          <% @attended.each do |attendance| %>
             <li>
               <%= image_tag attendance.user.image, width:20, height:20 %>
               <%= link_to attendance.user.name, current_user %>
@@ -62,7 +62,7 @@
         <h3 class="panel-title">欠席者一覧</h3>
       </div>
       <div class="panel-body">
-        <% @absences.each do |absence| %>
+        <% @absented.each do |absence| %>
           <li>
             <%= image_tag absence.user.image, width:20, height:20 %>
             <%= link_to absence.user.name, current_user %>

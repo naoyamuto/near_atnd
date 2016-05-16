@@ -7,12 +7,14 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    # @attend_status = current_user.attendees.find_by(event_id: params[:id])
-    @attend_status = current_user.attendees.where(id: params[:id], status: "attended").exists?
     # debugger
-    # @attend_flg = current_user.attended_events.where(id: params[:id]).exists?
-    @attendances = @event.attendees.where(status: "attended")
-    @absences = @event.attendees.where(status: "absented")
+    @attended = @event.attendees.where(status: "attended")
+    @absented = @event.attendees.where(status: "absented")
+
+    if current_user
+      # @attend_flg = current_user.attended_events.where(id: params[:id]).exists?
+      @attend_status = current_user.attendees.where(id: params[:id], status: "attended").exists?
+    end
   end
 
   def new
@@ -46,7 +48,7 @@ class EventsController < ApplicationController
   def destroy
     current_user.events.find(params[:id]).destroy
     flash[:danger] = "イベントが削除されました。"
-    redirect_to root_path
+    redirect_to events_path
   end
 
   def attend

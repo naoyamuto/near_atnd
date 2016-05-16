@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'events#index'
   get '/auth/:provider/callback' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-  delete '/events/:id/absent' => 'events#absent'
 
   resources :users
   resources :events do

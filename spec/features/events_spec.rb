@@ -70,7 +70,7 @@ RSpec.describe '/events', type: :feature do
       end
 
       it { should have_link('このイベントを編集する', edit_event_path(event)) }
-      it { should have_link('このイベントを削除する', event_path(event)) }
+      it { should have_link('このイベントを削除する', events_path) }
 
       context 'click edit link' do
         before do
@@ -127,7 +127,7 @@ RSpec.describe '/events', type: :feature do
         end
 
         context 'already attended' do
-          let!(:atended) { create :atendee, event: event, user: event.user }
+          let!(:attended) { create :attendee, event: event, user: event.user }
 
           before do
             visit event_path event
@@ -158,11 +158,12 @@ RSpec.describe '/events', type: :feature do
         login! user
         visit new_event_path
         fill_in 'event_title', with: title
+        fill_in 'event_hold_at', with: '2016-05-31'
         fill_in 'event_capacity', with: 10
         fill_in 'event_location', with: 'test location'
         fill_in 'event_owner', with: 'test owner'
         fill_in 'event_description', with: 'test description'
-        click_button '新しくイベントを作る'
+        click_button 'イベントを公開する'
       end
 
       it { current_path.should eq event_path(Event.last) }
@@ -190,6 +191,7 @@ RSpec.describe '/events', type: :feature do
         login! event.user
         visit edit_event_path event
         fill_in 'event_title', with: title
+        fill_in 'event_hold_at', with: '2016-05-31'
         click_button 'イベントを編集する'
       end
 
