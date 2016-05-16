@@ -1,7 +1,5 @@
-require 'time'
-
 class EventsController < ApplicationController
-  before_action :logged_in_user, only:[:new, :create, :destroy]
+  before_action :logged_in_user, only:[:new, :edit, :update, :create, :destroy]
 
   def index
     @events = Event.all
@@ -9,6 +7,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # @attend_status = current_user.attendees.find_by(event_id: params[:id])
+    @attend_status = current_user.attendees.where(id: params[:id], status: "attended").exists?
+    # debugger
+    # @attend_flg = current_user.attended_events.where(id: params[:id]).exists?
+    @attendances = @event.attendees.where(status: "attended")
+    @absences = @event.attendees.where(status: "absented")
   end
 
   def new
@@ -45,6 +49,29 @@ class EventsController < ApplicationController
     redirect_to root_path
   end
 
+  def attend
+    # すでにレコードがあったら更新、なければ保存
+    @attendee = current_user.attendees.find_by(params[:id])
+    if @attendee
+      @attendee.update_attribute(:status, "attended")
+      flash[:success] = "イベントの参加を受け付けました。"
+      redirect_to root_path
+    else
+      @attendee = current_user.attendees.build do |a|
+        a.event_id = params[:id]
+        a.status = "attended"
+      end
+      @attendee.save
+      flash[:success] = "イベントの参加を受け付けました。"
+      redirect_to root_path
+    end
+  end
+
+  def absent
+    @attendee = current_user.attendees.find_by(params[:id]).update_attribute(:status, "absented")
+    flash[:danger] = "イベントの参加をキャンセルしました。"
+    redirect_to root_path
+  end
 
   private
 

@@ -4,7 +4,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <%= form_for(@event) do |f| %>
       <%= render 'shared/error_messages' %>
 
@@ -24,7 +24,7 @@
       <%= f.text_field :owner, class: 'form-control' %>
 
       <%= f.label :イベント詳細 %>
-      <%= f.text_area :description, placeholder: "開催するイベントの内容を詳しく記載してください。", class: 'form-control' %>
+      <%= f.text_area :description, :size => "20x7", placeholder: "開催するイベントの内容を詳しく記載してください。", class: 'form-control' %>
 
       <%= f.submit "イベントを編集する", class: "btn btn-primary btn-lg" %>
     <% end %>

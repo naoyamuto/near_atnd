@@ -1,20 +1,22 @@
 <div class="page-header">
-  <h1>現在開催中のイベント</h1>
+  <h1>勉強会 / イベント一覧</h1>
 </div>
-
-<div class="events-list">
+<div class="row">
+  <div class="col-md-12">
   <% @events.each do |event| %>
-    <div class="panel panel-info">
+    <div class="panel panel-primary">
       <!-- Default panel contents -->
       <div class="panel-heading">
-        <h3 class="panel-title"><%= link_to event.title, event_path(event)  %></h3>
+        <h3 class="panel-title"><%= link_to event.title, event_path(event) %></h3>
       </div>
       <!-- List group -->
       <ul class="list-group">
         <li class="list-group-item">開催日：<%= event.hold_at %></li>
         <li class="list-group-item">最大人数：<%= event.capacity %>人</li>
         <li class="list-group-item">開催場所：<%= event.location %></li>
+        <li class="list-group-item"><%= link_to '詳しく見る', event_path(event)  %></li>
       </ul>
     </div>
   <% end %>
+  </div>
 </div>

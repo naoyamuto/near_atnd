@@ -33,8 +33,12 @@ textarea {
   margin-bottom: 10px;
 }
 
-.row {
-  margin-top: 30px !important;
+// .row {
+//   margin-top: 30px !important;
+// }
+
+.mgn {
+  margin-bottom: 30px;
 }
 
 /* typography */
@@ -80,6 +84,15 @@ p {
 #logo:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.navbar-inverse {
+    background-color: #337AB7 !important;
+    border-color: #337AB7 !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff !important;
 }
 
 /* forms */
