@@ -11,9 +11,7 @@ class EventsController < ApplicationController
     @absented = @event.attendees.where(status: "absented")
 
     if current_user
-      # @attend_flg = current_user.attended_events.where(id: params[:id]).exists?
       @attend_status = current_user.attendees.where(event_id: params[:id], status: "attended").exists?
-      # debugger
     end
   end
 
