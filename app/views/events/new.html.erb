@@ -8,22 +8,22 @@
       <%= form_for(@event) do |f| %>
         <%= render 'shared/error_messages' %>
 
-        <%= f.label :イベント名 %>
+        <%= f.label :title %>
         <%= f.text_field :title, placeholder: "（例）Product Managers Night #1", class: 'form-control' %>
 
-        <%= f.label :開催日 %>
+        <%= f.label :hold_at %>
         <%= f.date_field :hold_at, class: 'form-control'%>
 
-        <%= f.label :人数 %>
+        <%= f.label :capacity %>
         <%= f.text_field :capacity, placeholder: "（例）30", class: 'form-control' %>
 
-        <%= f.label :開催場所 %>
+        <%= f.label :location %>
         <%= f.text_field :location, placeholder: "（例）MTLcafe", class: 'form-control' %>
 
-        <%= f.label :主催者 %>
+        <%= f.label :owner %>
         <%= f.text_field :owner, placeholder: "（例）株式会社リクルートジョブズ", class: 'form-control' %>
 
-        <%= f.label :イベント詳細 %>
+        <%= f.label :description %>
         <%= f.text_area :description, :size => "20x7", placeholder: "開催するイベントの内容を詳しく記載してください。", class: 'form-control' %>
 
         <%= f.submit "イベントを公開する", class: "btn btn-primary btn-lg" %>

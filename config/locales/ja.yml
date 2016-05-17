@@ -7,6 +7,16 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      event: イベント
+    attributes:
+      event:
+        title: イベント名
+        hold_at: 開催日時
+        capacity: 参加人数
+        location: 開催場所
+        owner: 開催者
+        description: イベント詳細
   date:
     abbr_day_names:
     - 日
