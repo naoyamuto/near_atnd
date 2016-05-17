@@ -1,22 +1,35 @@
-<div class="page-header">
-  <h1>勉強会 / イベント一覧</h1>
+<% unless logged_in? %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>わくわくするイベントを簡単に作成しよう</h1>
+    <p>NEAR_ATNDはイベントや勉強会の開催をお手伝いするシンプルなサービスです。</p>
+    <a href="/auth/twitter" class="btn-login">Twiiterでログインする</a>
+  </div>
 </div>
-<div class="row">
-  <div class="col-md-12">
-  <% @events.each do |event| %>
-    <div class="panel panel-primary">
-      <!-- Default panel contents -->
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= link_to event.title, event_path(event) %></h3>
+<% end %>
+
+<div class="container">
+  <%= render 'shared/messages' %>
+  <div class="page-header">
+    <h1>開催予定のイベント一覧</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <% @events.each do |event| %>
+      <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= link_to event.title, event_path(event) %></h3>
+        </div>
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item">開催日：<%= event.hold_at %></li>
+          <li class="list-group-item">最大人数：<%= event.capacity %>人</li>
+          <li class="list-group-item">開催場所：<%= event.location %></li>
+          <li class="list-group-item"><%= link_to '詳しく見る', event_path(event)  %></li>
+        </ul>
       </div>
-      <!-- List group -->
-      <ul class="list-group">
-        <li class="list-group-item">開催日：<%= event.hold_at %></li>
-        <li class="list-group-item">最大人数：<%= event.capacity %>人</li>
-        <li class="list-group-item">開催場所：<%= event.location %></li>
-        <li class="list-group-item"><%= link_to '詳しく見る', event_path(event)  %></li>
-      </ul>
+    <% end %>
     </div>
-  <% end %>
   </div>
 </div>

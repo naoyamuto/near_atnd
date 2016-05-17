@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 $gray-medium-light: #eaeaea;
+$base-color: #337AB7;
 
 /* mixins, variables, etc. */
 @mixin box_sizing {
@@ -10,11 +11,32 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+.btn-login {
+  border: 3px solid #FFF;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #FFF;
+  font-size: 20px;
+  padding: 18px 20px;
+  margin: 40px 0px;
+  display: inline-block;
+}
+
+.btn-login a {
+  text-decoration: none;
+}
+
+.btn-login:hover {
+  text-decoration: none;
+  background-color: #FFF;
+  color: $base-color;
+}
+
 
 /* universal */
 
 body {
-  padding-top:60px;
+  padding-top: 50px;
 }
 
 section {
@@ -33,10 +55,6 @@ textarea {
   margin-bottom: 10px;
 }
 
-// .row {
-//   margin-top: 30px !important;
-// }
-
 .mgn {
   margin-bottom: 30px;
 }
@@ -50,7 +68,6 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
-  // text-align: center;
   font-size: 28px;
 }
 
@@ -66,6 +83,8 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  text-align: center;
+  color: white;
 }
 
 /* header */
@@ -87,13 +106,27 @@ p {
 }
 
 .navbar-inverse {
-    background-color: #337AB7 !important;
-    border-color: #337AB7 !important;
+    background-color: $base-color !important;
+    border-color: $base-color !important;
 }
 
 .navbar-inverse .navbar-nav > li > a {
   color: #fff !important;
 }
+
+/* jumbotron */
+
+.jumbotron {
+  text-align: center;
+}
+
+.jumbotron h1 {
+  font-size: 48px !important;
+  color: white;
+  font-weight: bold !important;
+  margin-top: 120px !important;
+}
+
 
 /* forms */
 
@@ -113,6 +146,9 @@ input {
   height: auto !important;
 }
 
+
+/* message */
+
 #error_explanation {
   color: red;
   ul {
@@ -128,10 +164,27 @@ input {
   }
 }
 
-#attendance {
-
+.alert {
+  margin-top: 30px;
 }
 
-#absence {
+/* footer */
 
+footer {
+  margin: 30px 0px;
+  padding: 10px 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
 }

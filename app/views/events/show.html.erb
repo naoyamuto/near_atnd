@@ -1,73 +1,76 @@
-<div class="row">
+<div class="container">
+  <%= render 'shared/messages' %>
   <div class="page-header">
     <h1><%= @event.title %></h1>
   </div>
-  <div class="col-md-9">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">開催日</h3>
+  <div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">開催日</h3>
+          </div>
+          <div class="panel-body"><%= @event.hold_at %></div>
         </div>
-        <div class="panel-body"><%= @event.hold_at %></div>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">最大人数</h3>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">最大人数</h3>
+          </div>
+          <div class="panel-body"><%= @event.capacity %>人</div>
         </div>
-        <div class="panel-body"><%= @event.capacity %>人</div>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">開催場所</h3>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">開催場所</h3>
+          </div>
+          <div class="panel-body"><%= @event.location %></div>
         </div>
-        <div class="panel-body"><%= @event.location %></div>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">開催者</h3>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">開催者</h3>
+          </div>
+          <div class="panel-body"><%= @event.owner %></div>
         </div>
-        <div class="panel-body"><%= @event.owner %></div>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">イベント詳細</h3>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">イベント詳細</h3>
+          </div>
+          <div class="panel-body"><%= @event.description %></div>
         </div>
-        <div class="panel-body"><%= @event.description %></div>
+        <% if @attend_status %>
+          <%= link_to 'このイベントをキャンセルする', absent_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
+        <% elsif logged_in? %>
+          <%= link_to 'このイベントに参加する', attend_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
+        <% end %>
       </div>
-      <% if @attend_status %>
-        <%= link_to 'このイベントをキャンセルする', absent_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
-      <% elsif logged_in? %>
-        <%= link_to 'このイベントに参加する', attend_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
-      <% end %>
-    </div>
-  <div class="col-md-3">
-  <% if @event.created_by?(current_user) %>
-    <%= link_to 'このイベントを編集する', edit_event_path(@event), class: 'btn btn-success btn-block' %>
-    <%= link_to "このイベントを削除する", event_path(@event), method: :delete, data: { confirm: "このイベントを本当に削除しますか？" }, class: 'btn btn-warning btn-block mgn'%>
-  <% end %>
-    <div id="attendance" class="panel panel-primary mgn">
-      <div class="panel-heading">
-        <h3 class="panel-title">参加者一覧</h3>
+    <div class="col-md-3">
+    <% if @event.created_by?(current_user) %>
+      <%= link_to 'このイベントを編集する', edit_event_path(@event), class: 'btn btn-success btn-block' %>
+      <%= link_to "このイベントを削除する", event_path(@event), method: :delete, data: { confirm: "このイベントを本当に削除しますか？" }, class: 'btn btn-warning btn-block mgn'%>
+    <% end %>
+      <div id="attendance" class="panel panel-primary mgn">
+        <div class="panel-heading">
+          <h3 class="panel-title">参加者一覧</h3>
+        </div>
+        <div class="panel-body">
+            <% @attended.each do |attendance| %>
+              <li>
+                <%= image_tag attendance.user.image, width:20, height:20 %>
+                <%= link_to attendance.user.name, user_path(attendance.user_id) %>
+              </li>
+            <% end %>
+        </div>
       </div>
-      <div class="panel-body">
-          <% @attended.each do |attendance| %>
+      <div id="absence" class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">欠席者一覧</h3>
+        </div>
+        <div class="panel-body">
+          <% @absented.each do |absence| %>
             <li>
-              <%= image_tag attendance.user.image, width:20, height:20 %>
-              <%= link_to attendance.user.name, user_path(attendance.user_id) %>
+              <%= image_tag absence.user.image, width:20, height:20 %>
+              <%= link_to absence.user.name, current_user %>
             </li>
           <% end %>
-      </div>
-    </div>
-    <div id="absence" class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">欠席者一覧</h3>
-      </div>
-      <div class="panel-body">
-        <% @absented.each do |absence| %>
-          <li>
-            <%= image_tag absence.user.image, width:20, height:20 %>
-            <%= link_to absence.user.name, current_user %>
-          </li>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
