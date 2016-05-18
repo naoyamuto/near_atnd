@@ -36,16 +36,12 @@
           <div class="panel-body"><%= @event.description %></div>
         </div>
         <% if @attend_status %>
-          <%= link_to 'このイベントをキャンセルする', absent_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
+          <%= link_to 'このイベントをキャンセルする', absent_event_path(@event), class: 'btn btn-primary btn-lg btn-block' %>
         <% elsif logged_in? %>
-          <%= link_to 'このイベントに参加する', attend_event_path(@event), class: 'btn btn-danger btn-lg btn-block' %>
+          <%= link_to 'このイベントに参加する', attend_event_path(@event), class: 'btn btn-primary btn-lg btn-block' %>
         <% end %>
       </div>
     <div class="col-md-3">
-    <% if @event.created_by?(current_user) %>
-      <%= link_to 'このイベントを編集する', edit_event_path(@event), class: 'btn btn-success btn-block' %>
-      <%= link_to "このイベントを削除する", event_path(@event), method: :delete, data: { confirm: "このイベントを本当に削除しますか？" }, class: 'btn btn-warning btn-block mgn'%>
-    <% end %>
       <div id="attendance" class="panel panel-primary mgn">
         <div class="panel-heading">
           <h3 class="panel-title">参加者一覧</h3>
@@ -72,6 +68,10 @@
           <% end %>
         </div>
       </div>
+      <% if @event.created_by?(current_user) %>
+        <%= link_to 'このイベントを編集する', edit_event_path(@event), class: 'btn btn-warning btn-block' %>
+        <%= link_to "このイベントを削除する", event_path(@event), method: :delete, data: { confirm: "このイベントを本当に削除しますか？" }, class: 'btn btn-danger btn-block mgn'%>
+      <% end %>
     </div>
   </div>
 </div>
