@@ -2,8 +2,9 @@ class SessionsController < ApplicationController
   def create
     begin
       @user = User.from_omniauth(request.env['omniauth.auth'])
+      # binding.pry
       session[:user_id] = @user.id
-      flash[:success] = "こんにちは、#{@user.nickname}さん！"
+      flash[:success] = "こんにちは、#{@user.name}さん！"
     rescue
       flash[:warning] = "ログインに失敗しました。"
     end
