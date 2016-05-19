@@ -13,8 +13,7 @@ class Event < ActiveRecord::Base
   # イベントを作成したユーザーだったらtrueを返す
   def created_by?(user)
     if user
-      user_id = user.id
+       return user_id == user.id
     end
   end
-
 end

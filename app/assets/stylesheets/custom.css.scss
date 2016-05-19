@@ -84,7 +84,6 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
   text-align: center;
-  color: white;
 }
 
 /* header */
@@ -147,6 +146,35 @@ input {
   height: auto !important;
 }
 
+/* modal */
+
+.modal-dialog-center {
+  padding-top: 10%;
+  width: 400px;
+  height: 400px;
+}
+
+.btn-twitter {
+  vertical-align: middle;
+  border-radius: 4px;
+  background-color: #70AECD;
+  color: white;
+  font-size: 16px;
+  padding: 18px 34px;
+  margin: 20px 0px 0px 0px;
+  display: inline-block;
+}
+
+.btn-facebook {
+  vertical-align: middle;
+  border-radius: 4px;
+  background-color: #7490C3;
+  color: white;
+  font-size: 16px;
+  padding: 18px 20px;
+  margin: 15px 0px 0px 0px;
+  display: inline-block;
+}
 
 /* message */
 
