@@ -11,9 +11,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :events do
-  #   resources :attendees
-  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

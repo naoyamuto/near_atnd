@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :attendees
   has_many :events
-  # has_many :attended_events, -> { where(attendees: {status: "attended"}) }, class_name: "Event", through: :attendees
 
   #Oauth認証で取得した情報をDBに登録するメソッド
   class << self

@@ -2,7 +2,7 @@
 <div class="jumbotron">
   <div class="container">
     <h1>わくわくするイベントを簡単に作成しよう</h1>
-    <p style="color:white;">NEAR ATNDはイベントや勉強会の開催をお手伝いするシンプルなサービスです。</p>
+    <p style="color:white;">Attendlyはイベントや勉強会の開催をお手伝いするシンプルなサービスです。</p>
     <a href="#" class="btn-login" data-toggle="modal" data-target="#oauthLogin">今すぐログインする</a>
     <%= render 'shared/login_modal' %>
   </div>
@@ -18,11 +18,9 @@
     <div class="col-md-12">
     <% @events.each do |event| %>
       <div class="panel panel-primary">
-        <!-- Default panel contents -->
         <div class="panel-heading">
           <h3 class="panel-title"><%= link_to event.title, event_path(event) %></h3>
         </div>
-        <!-- List group -->
         <ul class="list-group">
           <li class="list-group-item">開催日：<%= event.hold_at %></li>
           <li class="list-group-item">最大人数：<%= event.capacity %>人</li>

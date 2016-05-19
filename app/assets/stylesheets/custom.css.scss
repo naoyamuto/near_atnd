@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 $gray-medium-light: #eaeaea;
-$base-color: #337AB7;
+$base-color: #144673;
 
 /* mixins, variables, etc. */
 @mixin box_sizing {
@@ -93,7 +93,6 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;

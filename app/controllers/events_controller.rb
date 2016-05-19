@@ -51,7 +51,6 @@ class EventsController < ApplicationController
 
   def attend
     @attendee = current_user.attendees.find_by(event_id: params[:id])
-    # debugger
     if @attendee
       @attendee.update_attribute(:status, "attended")
       flash[:success] = "イベントの参加を受け付けました。"
