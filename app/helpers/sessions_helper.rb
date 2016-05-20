@@ -10,12 +10,7 @@ module SessionsHelper
     !current_user.nil?
   end
 
-  # 与えられたユーザーがログイン済みユーザーであればtrueを返す
-  def current_user?
-    user == current_user
-  end
-
-  #ユーザーのログインを確認する
+  #ユーザーのログイン状態を確認する
   def logged_in_user
     unless logged_in?
       flash[:danger] = "ログインしてください。"
