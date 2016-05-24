@@ -7,44 +7,44 @@
     <div class="col-md-9">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">開催日</h3>
+            <h3 class="panel-title"><%= t(:title) %></h3>
           </div>
           <div class="panel-body"><%= @event.hold_at %></div>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">最大人数</h3>
+            <h3 class="panel-title"><%= t(:capacity) %></h3>
           </div>
           <div class="panel-body"><%= @event.capacity %>人</div>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">開催場所</h3>
+            <h3 class="panel-title"><%= t(:location) %></h3>
           </div>
           <div class="panel-body"><%= @event.location %></div>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">開催者</h3>
+            <h3 class="panel-title"><%= t(:owner) %></h3>
           </div>
           <div class="panel-body"><%= @event.owner %></div>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">イベント詳細</h3>
+            <h3 class="panel-title"><%= t(:description) %></h3>
           </div>
           <div class="panel-body"><%= @event.description %></div>
         </div>
         <% if @attend_status %>
-          <%= link_to 'このイベントをキャンセルする', absent_event_path(@event), class: 'btn btn-primary btn-lg btn-block' %>
+          <%= link_to t(:absent_event), absent_event_path(@event), class: 'btn btn-primary btn-lg btn-block' %>
         <% elsif logged_in? %>
-          <%= link_to 'このイベントに参加する', attend_event_path(@event), class: 'btn btn-primary btn-lg btn-block' %>
+          <%= link_to t(:attend_event), attend_event_path(@event), class: 'btn btn-primary btn-lg btn-block' %>
         <% end %>
       </div>
     <div class="col-md-3">
       <div id="attendance" class="panel panel-primary mgn">
         <div class="panel-heading">
-          <h3 class="panel-title">参加者一覧</h3>
+          <h3 class="panel-title"><%= t(:attendees_list) %></h3>
         </div>
         <div class="panel-body">
             <% @attended.each do |attendance| %>
@@ -57,7 +57,7 @@
       </div>
       <div id="absence" class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">欠席者一覧</h3>
+          <h3 class="panel-title"><%= t(:absentees_list) %></h3>
         </div>
         <div class="panel-body">
           <% @absented.each do |absence| %>
@@ -69,8 +69,8 @@
         </div>
       </div>
       <% if @event.created_by?(current_user) %>
-        <%= link_to 'このイベントを編集する', edit_event_path(@event), class: 'btn btn-warning btn-block' %>
-        <%= link_to "このイベントを削除する", event_path(@event), method: :delete, data: { confirm: "このイベントを本当に削除しますか？" }, class: 'btn btn-danger btn-block mgn'%>
+        <%= link_to t(:update_event), edit_event_path(@event), class: 'btn btn-warning btn-block' %>
+        <%= link_to t(:delete_event), event_path(@event), method: :delete, data: { confirm: t(:delete_event?) }, class: 'btn btn-danger btn-block mgn'%>
       <% end %>
     </div>
   </div>

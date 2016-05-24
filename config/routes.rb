@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
-
+  scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
+    resources :posts, param: :slug
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

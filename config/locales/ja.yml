@@ -1,5 +1,38 @@
 ---
 ja:
+  # custom settings
+  headings: わくわくするイベントを簡単に作成しよう
+  sub_desciption: Attendlyはイベントや勉強会の開催をお手伝いするシンプルなサービスです
+  login_description: ログインするとイベントの作成、イベントの参加ができるようになります。
+  event_lists: 開催予定のイベント一覧
+  language: 言語
+  profile: プロフィール
+  log_in: ログインする
+  log_out: ログアウト
+  login_with_twitter: Twitterでログインする
+  login_with_facebook: Facebookでログインする
+  show_detail: 詳しく見る
+  title: イベント名
+  hold_at: 開催日時
+  capacity: 参加人数
+  location: 開催場所
+  owner: 開催者
+  attedees_list: 出席者一覧
+  absentees_list: 欠席者一覧
+  description: イベント詳細
+  create_event: イベントを作成する
+  update_event: イベントを編集する
+  delete_event: イベントを削除する
+  attend_event: イベントに参加する
+  absent_event: イベントの参加をキャンセルする
+  created_event: イベントが公開されました
+  updated_event: イベントが更新されました
+  deleted_event: イベントが削除されました
+  attended_event: イベントの参加を受け付けました
+  absented_event: イベントの参加をキャンセルしました
+  delete_event?: このイベントを本当に削除しますか？
+
+  # defalut settings
   activerecord:
     errors:
       messages:
@@ -7,16 +40,6 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-    models:
-      event: イベント
-    attributes:
-      event:
-        title: イベント名
-        hold_at: 開催日時
-        capacity: 参加人数
-        location: 開催場所
-        owner: 開催者
-        description: イベント詳細
   date:
     abbr_day_names:
     - 日

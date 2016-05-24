@@ -43,10 +43,10 @@ RSpec.describe '/events', type: :feature do
         visit event_path event
       end
 
-      it { should_not have_link('このイベントを編集する', edit_event_path(event)) }
-      it { should_not have_link('このイベントを削除する', event_path(event)) }
-      it { should_not have_link('このイベントをキャンセルする', absent_event_path(event)) }
-      it { should_not have_link('このイベントに参加する', attend_event_path(event)) }
+      it { should_not have_link('イベントを編集する', edit_event_path(event)) }
+      it { should_not have_link('イベントを削除する', event_path(event)) }
+      it { should_not have_link('イベントをキャンセルする', absent_event_path(event)) }
+      it { should_not have_link('イベントに参加する', attend_event_path(event)) }
 
       describe 'attendee' do
         let!(:attended) { create_list :attendee, 2, event: event }
@@ -68,13 +68,12 @@ RSpec.describe '/events', type: :feature do
         login! event.user
         visit event_path event
       end
-
-      it { should have_link('このイベントを編集する', edit_event_path(event)) }
-      it { should have_link('このイベントを削除する', events_path) }
+      it { should have_link('イベントを編集する', edit_event_path(event)) }
+      it { should have_link('イベントを削除する', events_path) }
 
       context 'click edit link' do
         before do
-          find_link('このイベントを編集する', href: edit_event_path(event)).click
+          find_link('イベントを編集する', href: edit_event_path(event)).click
         end
 
         it { current_path.should eq edit_event_path(event) }
@@ -82,7 +81,7 @@ RSpec.describe '/events', type: :feature do
 
       context 'click destroy link' do
         before do
-          find_link('このイベントを削除する', href: event_path(event)).click
+          find_link('イベントを削除する', href: event_path(event)).click
         end
 
         it { current_path.should eq events_path }
@@ -93,11 +92,11 @@ RSpec.describe '/events', type: :feature do
 
       describe 'attendee' do
         context 'not attend' do
-          it { should have_link('このイベントに参加する', attend_event_path(event)) }
+          it { should have_link('イベントに参加する', attend_event_path(event)) }
 
           context 'click Attend' do
             before do
-              click_link('このイベントに参加する')
+              click_link('イベントに参加する')
             end
 
             it { current_path.should eq event_path(event) }
@@ -108,7 +107,7 @@ RSpec.describe '/events', type: :feature do
               before do
                 visit event_path event
                 # binding.pry
-                click_link('このイベントをキャンセルする')
+                click_link('イベントの参加をキャンセルする')
               end
 
               it { current_path.should eq event_path(event) }
@@ -117,7 +116,7 @@ RSpec.describe '/events', type: :feature do
 
               context 'click Attend again' do
                 before do
-                  click_link('このイベントに参加する')
+                  click_link('イベントに参加する')
                 end
 
                 it { current_path.should eq event_path(event) }
@@ -135,7 +134,7 @@ RSpec.describe '/events', type: :feature do
             visit event_path event
           end
 
-          it { should have_link('このイベントをキャンセルする', absent_event_path(event)) }
+          it { should have_link('イベントの参加をキャンセルする', absent_event_path(event)) }
         end
       end
     end
@@ -165,7 +164,7 @@ RSpec.describe '/events', type: :feature do
         fill_in 'event_location', with: 'test location'
         fill_in 'event_owner', with: 'test owner'
         fill_in 'event_description', with: 'test description'
-        click_button 'イベントを公開する'
+        click_button 'イベントを作成する'
       end
 
       it { current_path.should eq event_path(Event.last) }

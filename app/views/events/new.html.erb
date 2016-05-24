@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page-header">
-    <h1>イベントを新規作成</h1>
+    <h1><%= t(:create_event) %></h1>
   </div>
 
   <div class="row">
@@ -14,19 +14,19 @@
         <%= f.label :hold_at %>
         <%= f.date_field :hold_at, class: 'form-control'%>
 
-        <%= f.label :capacity %>
+        <%= f.label t(:capacity) %>
         <%= f.text_field :capacity, placeholder: "（例）30", class: 'form-control' %>
 
-        <%= f.label :location %>
+        <%= f.label t(:location) %>
         <%= f.text_field :location, placeholder: "（例）MTLcafe", class: 'form-control' %>
 
-        <%= f.label :owner %>
+        <%= f.label t(:owner) %>
         <%= f.text_field :owner, placeholder: "（例）株式会社リクルートジョブズ", class: 'form-control' %>
 
-        <%= f.label :description %>
+        <%= f.label t(:description) %>
         <%= f.text_area :description, :size => "20x7", placeholder: "開催するイベントの内容を詳しく記載してください。", class: 'form-control' %>
 
-        <%= f.submit "イベントを公開する", class: "btn btn-primary btn-lg" %>
+        <%= f.submit t(:create_event), class: "btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>

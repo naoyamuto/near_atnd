@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      flash[:success] = "イベントが公開されました。"
+      flash[:success] = t(:created_event)
       redirect_to @event
     else
       render 'new'
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
   def update
     @event = current_user.events.find(params[:id])
     if @event.update_attributes(event_params)
-      flash[:success] = "イベントが更新されました。"
+      flash[:success] = t(:updated_event)
       redirect_to @event
     else
       render 'edit'
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
 
   def destroy
     current_user.events.find(params[:id]).destroy
-    flash[:danger] = "イベントが削除されました。"
+    flash[:danger] = t(:deleted_event)
     redirect_to events_path
   end
 
@@ -53,7 +53,7 @@ class EventsController < ApplicationController
     @attendee = current_user.attendees.find_by(event_id: params[:id])
     if @attendee
       @attendee.update_attribute(:status, "attended")
-      flash[:success] = "イベントの参加を受け付けました。"
+      flash[:success] = t(:attended_event)
       redirect_to event_path
     else
       @attendee = current_user.attendees.build do |a|
@@ -61,14 +61,14 @@ class EventsController < ApplicationController
         a.status = "attended"
       end
       @attendee.save
-      flash[:success] = "イベントの参加を受け付けました。"
+      flash[:success] = t(:attended_event)
       redirect_to event_path
     end
   end
 
   def absent
     @attendee = current_user.attendees.find_by(event_id: params[:id]).update_attribute(:status, "absented")
-    flash[:danger] = "イベントの参加をキャンセルしました。"
+    flash[:danger] = t(:absented_event)
     redirect_to event_path
   end
 
