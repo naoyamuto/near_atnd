@@ -4,4 +4,5 @@ class Attendee < ActiveRecord::Base
   default_scope -> { order(created_at: :desc) }
   validates :event_id, presence: true
   validates :user_id, presence: true
+
 end
